@@ -65,13 +65,13 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
 /* USER CODE END 1 */
 ```
 
-至此已经可以完成了基本配置,可以在串口交互了
+至此已经完成了基本配置,可以在串口交互了
 
 ## 自定义注册串口命令
 
 ### 自定义函数的参数列表
 
-对于需要注册为串口命令的函数,其参数类型必须为`uint64_t`返回值类型必须为`int64_t`,在函数内使用`UARTTTY_CVT_TO_XXX`进行参数解析
+对于需要注册为串口命令的函数,其参数类型必须为`uint64_t`,返回值类型必须为`int64_t`,在函数内使用`UARTTTY_CVT_TO_XXX`进行参数解析
 
 ```c
 int64_t add_demo(uint64_t para1,uint64_t para2, uint64_t para3,uint64_t para4) {
