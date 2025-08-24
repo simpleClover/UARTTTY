@@ -113,7 +113,7 @@ UARTTTY_register(add_demo,"add_demo",4,"NNDD",
     "para2(int32_t) is second integer\r\n"
     "para3(double) is first double\r\n"
     "para4(double) is second double\r\n"
-    "e.g. add_demo(-15, 0x15, -12.5, 30.25)"
+    "e.g. add_demo(-15, 0x15, -12.5, 30.25)\r\n"
 );
 ```
 
