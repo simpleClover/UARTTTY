@@ -38,7 +38,7 @@ typedef struct tty_t {
     UART_HandleTypeDef *huart;
     uint8_t func_num;
     func_table_t func_table[UARTTTY_FUNC_TABLE_MAX];
-    uint8_t recv_buf[UARTTTY_RECV_BUF_SIZE];
+    char recv_buf[UARTTTY_RECV_BUF_SIZE];
     char recv_str_buf[UARTTTY_FUNC_PARA_MAX][UARTTTY_PARA_STR_MAX_LEN];
 }uart_tty_t;
 

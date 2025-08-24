@@ -27,7 +27,7 @@ int32_t UARTTTY_Init(void) {
 }
 
 int32_t UARTTTY_start() {
-    return HAL_UARTEx_ReceiveToIdle_IT(tty.huart,tty.recv_buf,UARTTTY_RECV_BUF_SIZE);
+    return HAL_UARTEx_ReceiveToIdle_IT(tty.huart,(uint8_t *)tty.recv_buf,UARTTTY_RECV_BUF_SIZE);
 }
 
 int32_t UARTTTY_register(void* func, char* func_name, const uint8_t para_num,const char* para_type,char * func_help) {
@@ -283,7 +283,7 @@ int32_t UARTTTY_Process(const UART_HandleTypeDef *huart, const uint16_t Size) {
 #if UARTTTY_FUNC_PARA_MAX >= 0
             case 0: {
                 typedef int64_t(*target_func_t)();
-                target_func_t target_func = tty.func_table[func_index].func;
+                target_func_t target_func = (target_func_t)tty.func_table[func_index].func;
                 ret_value = target_func();
                 break;
             }
@@ -291,7 +291,7 @@ int32_t UARTTTY_Process(const UART_HandleTypeDef *huart, const uint16_t Size) {
 #if UARTTTY_FUNC_PARA_MAX >= 1
             case 1: {
                 typedef int64_t(*target_func_t)(uint64_t);
-                target_func_t target_func = tty.func_table[func_index].func;
+                target_func_t target_func = (target_func_t)tty.func_table[func_index].func;
                 ret_value = target_func(para[0]);
                 break;
             }
@@ -299,7 +299,7 @@ int32_t UARTTTY_Process(const UART_HandleTypeDef *huart, const uint16_t Size) {
 #if UARTTTY_FUNC_PARA_MAX >= 2
             case 2: {
                 typedef int64_t(*target_func_t)(uint64_t,uint64_t);
-                target_func_t target_func = tty.func_table[func_index].func;
+                target_func_t target_func = (target_func_t)tty.func_table[func_index].func;
                 ret_value = target_func(para[0],para[1]);
                 break;
             }
@@ -307,7 +307,7 @@ int32_t UARTTTY_Process(const UART_HandleTypeDef *huart, const uint16_t Size) {
 #if UARTTTY_FUNC_PARA_MAX >= 3
             case 3: {
                 typedef int64_t(*target_func_t)(uint64_t,uint64_t,uint64_t);
-                target_func_t target_func = tty.func_table[func_index].func;
+                target_func_t target_func = (target_func_t)tty.func_table[func_index].func;
                 ret_value = target_func(para[0],para[1],para[2]);
                 break;
             }
@@ -315,7 +315,7 @@ int32_t UARTTTY_Process(const UART_HandleTypeDef *huart, const uint16_t Size) {
 #if UARTTTY_FUNC_PARA_MAX >= 4
             case 4: {
                 typedef int64_t(*target_func_t)(uint64_t,uint64_t,uint64_t,uint64_t);
-                target_func_t target_func= tty.func_table[func_index].func;
+                target_func_t target_func= (target_func_t)tty.func_table[func_index].func;
                 ret_value = target_func(para[0],para[1],para[2],para[3]);
                 break;
             }
@@ -323,7 +323,7 @@ int32_t UARTTTY_Process(const UART_HandleTypeDef *huart, const uint16_t Size) {
 #if UARTTTY_FUNC_PARA_MAX >= 5
             case 5: {
                 typedef int64_t(*target_func_t)(uint64_t,uint64_t,uint64_t,uint64_t,uint64_t);
-                target_func_t target_func= tty.func_table[func_index].func;
+                target_func_t target_func= (target_func_t)tty.func_table[func_index].func;
                 ret_value = target_func(para[0],para[1],para[2],para[3],para[4]);
                 break;
             }
@@ -331,7 +331,7 @@ int32_t UARTTTY_Process(const UART_HandleTypeDef *huart, const uint16_t Size) {
 #if UARTTTY_FUNC_PARA_MAX >= 6
             case 6: {
                 typedef int64_t(*target_func_t)(uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t);
-                target_func_t target_func= tty.func_table[func_index].func;
+                target_func_t target_func= (target_func_t)tty.func_table[func_index].func;
                 ret_value = target_func(para[0],para[1],para[2],para[3],para[4],para[5]);
                 break;
             }
@@ -339,7 +339,7 @@ int32_t UARTTTY_Process(const UART_HandleTypeDef *huart, const uint16_t Size) {
 #if UARTTTY_FUNC_PARA_MAX >= 7
             case 7: {
                 typedef int64_t(*target_func_t)(uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t);
-                target_func_t target_func= tty.func_table[func_index].func;
+                target_func_t target_func= (target_func_t)tty.func_table[func_index].func;
                 ret_value = target_func(para[0],para[1],para[2],para[3],para[4],para[5],para[6]);
                 break;
             }
@@ -347,7 +347,7 @@ int32_t UARTTTY_Process(const UART_HandleTypeDef *huart, const uint16_t Size) {
 #if UARTTTY_FUNC_PARA_MAX >= 8
             case 8: {
                 typedef int64_t(*target_func_t)(uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t);
-                target_func_t target_func= tty.func_table[func_index].func;
+                target_func_t target_func= (target_func_t)tty.func_table[func_index].func;
                 ret_value = target_func(para[0],para[1],para[2],para[3],para[4],para[5],para[6],para[7]);
                 break;
             }
@@ -355,7 +355,7 @@ int32_t UARTTTY_Process(const UART_HandleTypeDef *huart, const uint16_t Size) {
 #if UARTTTY_FUNC_PARA_MAX >= 9
             case 9: {
                 typedef int64_t(*target_func_t)(uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t);
-                target_func_t target_func= tty.func_table[func_index].func;
+                target_func_t target_func= (target_func_t)tty.func_table[func_index].func;
                 ret_value = target_func(para[0],para[1],para[2],para[3],para[4],para[5],para[6],para[7],para[8]);
                 break;
             }
@@ -363,7 +363,7 @@ int32_t UARTTTY_Process(const UART_HandleTypeDef *huart, const uint16_t Size) {
 #if UARTTTY_FUNC_PARA_MAX >= 10
             case 10: {
                 typedef int64_t(*target_func_t)(uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t,uint64_t);
-                target_func_t target_func= tty.func_table[func_index].func;
+                target_func_t target_func= (target_func_t)tty.func_table[func_index].func;
                 ret_value = target_func(para[0],para[1],para[2],para[3],para[4],para[5],para[6],para[7],para[8],para[9]);
                 break;
             }

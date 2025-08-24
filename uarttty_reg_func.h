@@ -9,7 +9,7 @@
 
 #if UARTTTY_EN
 
-void UARTTTY_func_reg();
+void UARTTTY_func_reg(void);
 
 #endif
 

@@ -83,18 +83,18 @@ int64_t read_byte(uint64_t para1,uint64_t para2,uint64_t para3) {
     UARTTTY_CVT_PARA_TO_UINT8(para3,bit_mode);
 
     uint8_t inline_num = 0;
-    printf("Memory Table from %010p to %010p", (void* )address, (void* )address + length - 1);
+    printf("Memory Table from %10p to %10p", (uint8_t* )address, (uint8_t* )address + length - 1);
     for (uint32_t addr = address; addr < address + length; addr++) {
         const uint8_t data = *(uint8_t*)addr;
         if (bit_mode == 0) {
             if (inline_num == 0) {
-                printf("\r\n%010p : %02x", (void* )addr, (unsigned int)data);
+                printf("\r\n%10p : %02x", (uint8_t* )addr, (unsigned int)data);
             }else {
                 printf(" %02x", (unsigned int)data);
             }
         }else {
             if (inline_num == 0) {
-                printf("\r\n%010p : ", (void* )addr);
+                printf("\r\n%10p : ", (uint8_t* )addr);
                 for (uint8_t mask = 0x80 ; mask != 0; mask >>= 1)
                     putchar(data & mask ? '1' : '0');
                 putchar(' ');
@@ -120,9 +120,9 @@ int64_t write_byte(uint64_t para1,uint64_t para2) {
     *(uint8_t*)address = data;
     volatile uint8_t rd_data = 0;
     rd_data = *(uint8_t*)address;
-    printf("1st read %010p : %02x\r\n", (void* )address, (unsigned int)rd_data);
+    printf("1st read %10p : %02x\r\n", (uint8_t* )address, (unsigned int)rd_data);
     rd_data = *(uint8_t*)address;
-    printf("2nd read %010p : %02x\r\n", (void* )address, (unsigned int)rd_data);
+    printf("2nd read %10p : %02x\r\n", (uint8_t* )address, (unsigned int)rd_data);
     return 0;
 }
 

@@ -115,7 +115,13 @@ double uarttty_str_to_double(const char * str) {
 }
 
 void uarttty_strcpy(const char* src, char* dest) {
-    while ((*dest++ = *src++));
+    while (1){
+		*dest = *src;
+		if(*dest == '\0')
+			break;
+		dest++;
+		src++;
+	};
 }
 
 void uarttty_strncpy(const char *src, char *dest, uint32_t size)
@@ -125,7 +131,13 @@ void uarttty_strncpy(const char *src, char *dest, uint32_t size)
             *dest = '\0';
             return;
         }
-    }while(size-- && ((*dest++ = *src++)));
+		*dest = *src;
+		if(*dest == '\0'){
+			break;
+		}
+		dest++;
+		src++;
+    }while(size--);
 }
 int32_t uarttty_strcmp(const char* cmp1,const char* cmp2) {
     int32_t index = 0;

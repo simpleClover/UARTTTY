@@ -5,11 +5,11 @@
 #ifndef UARTTTY_CONF_H
 #define UARTTTY_CONF_H
 
-#define UARTTTY_EN 1
+#define UARTTTY_EN 0
 
 #if UARTTTY_EN
 
-#define UARTTTY_HANDLE_UART huart1
+#define UARTTTY_HANDLE_UART huart3
 #define UARTTTY_RECV_BUF_SIZE 512
 #define UARTTTY_FUNC_PARA_MAX 5         // 0-10
 #define UARTTTY_FUNC_TABLE_MAX 20
