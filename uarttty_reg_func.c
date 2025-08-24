@@ -156,7 +156,7 @@ void UARTTTY_func_reg() {
 
     UARTTTY_register(show_uarttty_cfg,"show_uarttty_cfg",0,"",
         "function 'show_uarttty_cfg' shows the self defined config\r\n"
-        "all the config type is int32_t");
+        "all the config type is int32_t\r\n");
 
     UARTTTY_register(uarttty_cfg,"uarttty_cfg",2,"SN",
         "function 'uarttty_cfg' can edit the self defined config\r\n"
@@ -181,7 +181,7 @@ void UARTTTY_func_reg() {
         "para2(int32_t) is a number\r\n"
         "para3(double) is a number\r\n"
         "in function will call the printf(para1,para2,para3)\r\n"
-        "e.g. printf_demo(\"recv value: %d %lf\\r\\n\",42,-42.5)");
+        "e.g. printf_demo(\"recv value: %d %lf\\r\\n\",42,-42.5)\r\n");
 
     UARTTTY_register(add_demo,"add_demo",4,"NNDD",
     "function 'add_demo' is a para simple test\r\n"
@@ -189,6 +189,6 @@ void UARTTTY_func_reg() {
     "para2(int32_t) is second integer\r\n"
     "para3(double) is first double\r\n"
     "para4(double) is second double\r\n"
-    "e.g. add_demo(-15, 0x15, -12.5, 30.25)");
+    "e.g. add_demo(-15, 0x15, -12.5, 30.25)\r\n");
 }
 #endif
